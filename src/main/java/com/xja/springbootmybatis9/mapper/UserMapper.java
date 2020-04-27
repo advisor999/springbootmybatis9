@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 用户接口
+ */
 public interface UserMapper {
     public List<User> findAll();
 

@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * session使用Redis保存控制器
+ */
 @RestController
 @RequestMapping("/rest/session")
 public class RedisSessionController {

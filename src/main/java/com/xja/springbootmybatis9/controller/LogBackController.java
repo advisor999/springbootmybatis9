@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * 日志功能控制器
+ */
 @RestController
 @RequestMapping("/back/logback")
 public class LogBackController{
