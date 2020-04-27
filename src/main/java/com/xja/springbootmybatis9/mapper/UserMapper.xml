@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xja.springbootmybatis9.mapper.UserMapper">
+    <resultMap type="com.xja.springbootmybatis9.domain.User" id="userMap">
+        <!-- id属性来映射主键字段 -->
+        <id column="id" property="id" javaType="int"/>
+        <!-- result属性映射非主键字段 -->
+        <result column="name" property="name" javaType="String"/>
+        <result column="phone" property="phone" javaType="String"/>
+        <result column="create_time" property="createTime" javaType="date"/>
+        <result column="age" property="age" javaType="int"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="userMap">
+		select * from user
+	</select>
+
+    <select id="getRecordCount" resultType="int">
+		SELECT count(1) FROM user
+	</select>
+
+    <select id="search" resultMap="userMap">
+		SELECT * FROM user
+			ORDER BY id DESC
+			LIMIT #{from},#{pageSize}
+	</select>
+
+    <select id="getById" parameterType="int" resultMap="userMap">
+		SELECT * FROM user
+			WHERE id = #{id}
+	</select>
+
+    <insert id="add" parameterType="com.xja.springbootmybatis9.domain.User"
+			useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user (name,phone,create_time,age)
+			VALUES (#{name},#{phone},#{createTime},#{age});
+	</insert>
+
+    <delete id="delete" parameterType="int">
+		DELETE FROM user WHERE id = #{id}
+	</delete>
+
+    <update id="update" parameterType="com.xja.springbootmybatis9.domain.User">
+		UPDATE user
+			SET name=#{name},phone=#{phone},age=#{age}
+			WHERE id=#{id}
+	</update>
+
+</mapper>

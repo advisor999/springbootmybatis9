@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--thymeleaf名称空间-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:each="user:${list}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.createTime}"></td>
+        <td><a th:href="@{'/user/remove/'+${user.id}}">删除</a></td>
+    </tr>
+</table>
+<a href="/user/pre_add">添加用户</a>
+</body>
+</html>
